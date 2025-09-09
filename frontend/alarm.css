@@ -1,0 +1,549 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            color: #333;
+            transition: all 0.5s ease;
+        }
+
+        /* Aesthetic Theme (Default) */
+        body.aesthetic {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 25%, #ff9a9e 50%, #fecfef 75%, #fecfef 100%);
+        }
+
+        .aesthetic .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 20px;
+            padding: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+
+        .aesthetic .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .aesthetic .btn-primary {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #ffecd2);
+            background-size: 300% 300%;
+            animation: aestheticGradient 3s ease infinite;
+        }
+
+        @keyframes aestheticGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .aesthetic .btn-secondary {
+            background: linear-gradient(45deg, #fcb69f, #ff9a9e);
+        }
+
+        .aesthetic .timer-display {
+            color: #d63384;
+            text-shadow: 2px 2px 10px rgba(214, 51, 132, 0.3);
+        }
+
+        .aesthetic .header h1 {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #d63384);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        /* Gaming Theme */
+        body.gaming {
+            background: 
+                radial-gradient(circle at 25% 25%, #1a1a2e 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, #16213e 0%, transparent 50%),
+                linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+        }
+
+        .gaming::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #00ff88, transparent),
+                radial-gradient(2px 2px at 40px 70px, #00d4ff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ff0080, transparent),
+                radial-gradient(1px 1px at 130px 80px, #ffff00, transparent);
+            background-repeat: repeat;
+            background-size: 150px 150px;
+            animation: gameStars 20s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes gameStars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-150px); }
+        }
+
+        .gaming .container {
+            background: rgba(26, 26, 46, 0.8);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            margin: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 136, 0.3),
+                inset 0 0 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .gaming .card {
+            background: rgba(22, 33, 62, 0.9);
+            border: 1px solid #00d4ff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 
+                0 5px 20px rgba(0, 212, 255, 0.2),
+                inset 0 0 20px rgba(0, 212, 255, 0.05);
+        }
+
+        .gaming .btn-primary {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            border: 1px solid #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gaming .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .gaming .btn-secondary {
+            background: linear-gradient(45deg, #ff0080, #ff6b6b);
+            border: 1px solid #ff0080;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+        }
+
+        .gaming .timer-display {
+            color: #00ff88;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            font-family: 'Courier New', monospace;
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(0, 255, 136, 0.1);
+        }
+
+        .gaming .header h1 {
+            color: #00ff88;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .gaming .header h1::before {
+            content: '>>> ';
+            color: #00d4ff;
+        }
+
+        .gaming .header h1::after {
+            content: ' <<<';
+            color: #00d4ff;
+        }
+
+        /* Common Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            color: inherit;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .aesthetic .theme-toggle {
+            background: linear-gradient(45deg, #d63384, #ff9a9e);
+            color: white;
+        }
+
+        .gaming .theme-toggle {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            color: #0f0f23;
+            border: 1px solid #00ff88;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timer-section {
+            text-align: center;
+        }
+
+        .timer-display {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .timer-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .session-info {
+            color: inherit;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .aesthetic .session-info {
+            background: linear-gradient(45deg, #ffecd2, #fcb69f);
+            color: #d63384;
+        }
+
+        .gaming .session-info {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+        }
+
+        .goals-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .aesthetic .goals-section h3 {
+            color: #d63384;
+        }
+
+        .gaming .goals-section h3 {
+            color: #00ff88;
+            text-transform: uppercase;
+        }
+
+        .goal-input, .subject-input, .color-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .gaming .goal-input, .gaming .subject-input {
+            background: rgba(22, 33, 62, 0.9);
+            border: 1px solid #00d4ff;
+            color: #00ff88;
+        }
+
+        .subject-setup {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .aesthetic .subject-setup {
+            background: linear-gradient(45deg, rgba(255, 154, 158, 0.1), rgba(254, 207, 239, 0.1));
+            border: 2px solid rgba(255, 154, 158, 0.3);
+        }
+
+        .gaming .subject-setup {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00ff88;
+        }
+
+        .subject-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .aesthetic .subject-item {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .gaming .subject-item {
+            background: rgba(22, 33, 62, 0.7);
+            border: 1px solid #00d4ff;
+        }
+
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .aesthetic .progress-fill {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .gaming .progress-fill {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+        }
+
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        .aesthetic .stat-card {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .gaming .stat-card {
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            color: #0f0f23;
+            border: 1px solid #00ff88;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        .gaming .modal-content {
+            background: rgba(22, 33, 62, 0.95);
+            border: 2px solid #00ff88;
+            color: #00ff88;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .focus-flame {
+            font-size: 3em;
+            margin: 20px 0;
+            animation: flameFlicker 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes flameFlicker {
+            from { transform: scale(1) rotate(-1deg); }
+            to { transform: scale(1.1) rotate(1deg); }
+        }
+
+        .ai-suggestions {
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .aesthetic .ai-suggestions {
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .gaming .ai-suggestions {
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+        }
+
+        .suggestion-item {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .aesthetic .suggestion-item {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .gaming .suggestion-item {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 3px solid #00d4ff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        .subject-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .color-tag {
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-display {
+                font-size: 3em;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+
+        .delete-btn, .delete-goal {
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .goals-list .goal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .aesthetic .goal-item {
+            background: linear-gradient(45deg, rgba(255, 154, 158, 0.2), rgba(254, 207, 239, 0.2));
+        }
+
+        .gaming .goal-item {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid #00d4ff;
+            color: #00ff88;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 15px;
+        }

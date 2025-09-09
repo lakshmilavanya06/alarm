@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyFlow - AI-Powered Pomodoro Tracker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="alarm.css">
+</head>
+<body class="aesthetic">
+    <button class="theme-toggle" onclick="toggleTheme()">🎮 Gaming Mode</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1 id="headerTitle">StudyFlow</h1>
+            <p>AI-Powered Pomodoro Study Tracker</p>
+        </div>
+
+        <!-- Subject Setup -->
+        <div class="card subject-setup">
+            <h3>📚 Customize Your Subjects</h3>
+            <div class="subject-grid">
+                <input type="text" class="subject-input" id="subjectNameInput" placeholder="Subject name (e.g., Mathematics)">
+                <input type="color" class="color-input" id="subjectColorInput" value="#667eea">
+                <button class="btn btn-primary" onclick="addCustomSubject()">Add</button>
+            </div>
+            <div id="customSubjectsList"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="card timer-section">
+                <h2 id="timerTitle">🍅 Focus Timer</h2>
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="timer-controls">
+                    <button class="btn btn-primary" id="startBtn" onclick="startTimer()">Start</button>
+                    <button class="btn btn-secondary" id="pauseBtn" onclick="pauseTimer()">Pause</button>
+                    <button class="btn btn-secondary" onclick="resetTimer()">Reset</button>
+                </div>
+                <div class="session-info" id="sessionInfo">
+                    <strong>Session #1</strong> • Ready to focus!
+                </div>
+            </div>
+
+            <div class="card goals-section">
+                <h3 id="goalsTitle">🎯 Study Goals</h3>
+                <input type="text" class="goal-input" id="goalInput" placeholder="Enter your study goal (e.g., Complete DBMS Chapter 5)">
+                <button class="btn btn-primary" onclick="addGoal()">Add Goal</button>
+                <div class="goals-list" id="goalsList"></div>
+            </div>
+        </div>
+
+        <div class="stats-summary">
+            <div class="stat-card">
+                <div class="stat-number" id="totalSessions">0</div>
+                <div class="stat-label">Sessions Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalMinutes">0</div>
+                <div class="stat-label">Minutes Studied</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalSubjects">0</div>
+                <div class="stat-label">Subjects Covered</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="weeklyGoal">65%</div>
+                <div class="stat-label">Weekly Progress</div>
+            </div>
+        </div>
+
+        <div class="ai-suggestions">
+            <h4 id="aiTitle">🤖 AI Study Insights</h4>
+            <div id="aiSuggestionsList">
+                <div class="suggestion-item">📊 Customize your subjects above to get personalized insights!</div>
+                <div class="suggestion-item">⚡ Add your favorite subjects with custom colors for better organization.</div>
+                <div class="suggestion-item">🎯 Set your study goals and let AI guide your learning journey.</div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card">
+                <h3>📈 Today's Progress</h3>
+                <div class="subject-colors" id="subjectColorsDisplay"></div>
+                <div class="chart-container">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📊 Weekly Overview</h3>
+                <div class="chart-container">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Topic Input Modal -->
+    <div class="modal" id="topicModal">
+        <div class="modal-content">
+            <h3>🎉 Great Session!</h3>
+            <p>What topic or syllabus did you complete?</p>
+            <input type="text" class="goal-input" id="topicInput" placeholder="e.g., Calculus: Integration, Physics: Quantum Mechanics">
+            <select class="goal-input" id="subjectSelect"></select>
+            <div style="margin: 20px 0;">
+                <button class="btn btn-primary" onclick="logTopic()">Log Topic</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Break Decision Modal -->
+    <div class="modal" id="breakModal">
+        <div class="modal-content">
+            <h3>⏸️ Session Complete!</h3>
+            <p>Would you like to continue studying or take a break?</p>
+            <div style="margin: 20px 0;">
+                <button class="btn btn-primary" onclick="continueStudying()">Continue Studying 🔥</button>
+                <button class="btn btn-secondary" onclick="takeBreak()" style="margin-left: 10px;">Take Break ☕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Focus Flame Modal -->
+    <div class="modal" id="flameModal">
+        <div class="modal-content">
+            <h3 id="focusTitle">🔥 Focus Mode Activated</h3>
+            <div class="focus-flame" id="focusIcon">🕯️</div>
+            <p id="focusText">Get ready to dive deep into your studies...</p>
+            <div id="flameCountdown">3</div>
+        </div>
+    </div>
+
+    <script>
+     
+</body>
+</html>
